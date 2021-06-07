@@ -1,0 +1,42 @@
+<!-- <div id="container"></div>
+<input type="button" value="AJAX Load" onclick="load();"/>
+
+<script>
+function load () {
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', 'data.html');
+  xhr.onload = function () {
+    document.getElementById("container").innerHTML = this.response;
+  };
+  xhr.send();
+}
+</script> -->
+
+
+<div id="container"></div>
+<input type="button" value="Load Data" onclick="load();"/>
+ 
+
+<script>
+function load() {
+
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', "dummy.txt");
+  xhr.onload = function () {
+
+    var data = JSON.parse(this.response);
+    console.log(data);
+    var table = "<table>";  
+    for (let person of data) {
+      table += "<tr>";
+      table += "<td>" + person.name + "</td>";
+      table += "<td>" + person.email + "</td>";
+      table += "</tr>";
+    }
+
+
+    document.getElementById("container").innerHTML = table;
+  };
+  xhr.send();
+}
+</script> 
